@@ -1,0 +1,30 @@
+spring:
+  session:
+    jdbc:
+      schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+      initialize-schema: always
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: AUTH-SERVICE
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: ${SPRING_MAIL_HOST}
+    port: ${SPRING_MAIL_PORT}
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    protocol: smtps
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
